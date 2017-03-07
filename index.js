@@ -1,5 +1,5 @@
 var gameStart = function(){
-	console.log('Pipes started');
+    console.log('Pipes started');
     var self = this;
     self.getTileWithName = function (tileName) {
         return PipeTiles[tileName].tile.join('</br>');
@@ -22,7 +22,7 @@ var gameStart = function(){
     }
 
 	for(var i = 0; i < tiles.length; i++ ) {
-		tiles[i].innerHTML = PipeTiles.blank.tile.join('</br>');
+	    tiles[i].innerHTML = PipeTiles.blank.tile.join('</br>');
 	}
 
 	// Set up the first tile
@@ -33,7 +33,7 @@ var gameStart = function(){
         if(e.target.classList.contains('tile')) {
             e.target.innerHTML = getTileWithName(tileBag[self.nextTileNumber]); 
             self.nextTileNumber = randomIntFromInterval(1, tileBag.length-1);
-			document.getElementById("next-tile").innerHTML = getTileWithName(tileBag[self.nextTileNumber]);
+	    document.getElementById("next-tile").innerHTML = getTileWithName(tileBag[self.nextTileNumber]);
         }
     	
     	if(e.target.classList.contains('start'))
@@ -42,9 +42,8 @@ var gameStart = function(){
     		//▓▓▓▓
     		var board = document.getElementsByClassName("board")[0];
 	    	if (true){//board.innerText.substring(0,29).includes(" ")) {
-	    		console.log("Start the flow");
-	    		board.innerText = board.innerText.split().splice(11,1,"▓").join(); 
-
+	    	    console.log("Start the flow");
+	    	    board.innerText = board.innerText.split().splice(11,1,"▓").join(); 
 	    	}
     	}
     }
