@@ -101,7 +101,7 @@ var PipeTiles = {
         ],
         frequency: 2
     },
-    verticle: {
+    vertical: {
         tile: [
         '▒║ ║▒',
         '▒║ ║▒',
