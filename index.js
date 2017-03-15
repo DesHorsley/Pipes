@@ -48,12 +48,17 @@ var gameStart = function(){
     	{
     		var tile = self.tiles[0];
     		//▓▓▓▓
-    		var board = document.getElementsByClassName("board");
+    		var board = document.getElementsByClassName("board")[0];
+            var flow = false;
 	    	if (tileObj[0].clearLeft){//board.innerText.substring(0,29).includes(" ")) {
-	    	    console.log("Start the flow");
-                alert(tile.innerText);
-             
-                board.innerHTML = board.innerText.split().splice(11,1,"▓").join(); 
+                flow = true;
+	    	    console.log("Starting the flow");
+                alert(tile.innerHTML.indexOf(' '));
+                //alert(board.innerText.split().splice(11,1,"▓"));
+                var str = tile.innerHTML.split();
+                str.splice(tile.innerHTML.indexOf(' '),1,"▓").join();
+                alert(str);
+                //tile.innerHTML = str;
 	    	} else {
                 alert("Pipe blocked!");
             }
