@@ -4,7 +4,6 @@ var gameStart = function(){
     var tileObj = [];
     self.getTileWithName = function (tileName) {
         return PipeTiles[tileName];//returns a reference to the object
-        //return PipeTiles[tileName].tile.join('</br>');
     }
 
     self.randomIntFromInterval = function(min,max)
@@ -47,18 +46,16 @@ var gameStart = function(){
     	if(e.target.classList.contains('start'))
     	{
     		var tile = self.tiles[0];
-    		//▓▓▓▓
+    		
     		var board = document.getElementsByClassName("board")[0];
             var flow = false;
-	    	if (tileObj[0].clearLeft){//board.innerText.substring(0,29).includes(" ")) {
+	    	if (tileObj[0].clearLeft) {
                 flow = true;
 	    	    console.log("Starting the flow");
                 alert(tile.innerHTML.indexOf(' '));
-                //alert(board.innerText.split().splice(11,1,"▓"));
                 var str = tile.innerHTML.split();
                 str.splice(tile.innerHTML.indexOf(' '),1,"▓").join();
                 alert(str);
-                //tile.innerHTML = str;
 	    	} else {
                 alert("Pipe blocked!");
             }
