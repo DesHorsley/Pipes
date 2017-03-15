@@ -4,6 +4,7 @@
   "description": "Javascript version of Pipe Mania",
   "main": "index.js",
   "scripts": {
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
