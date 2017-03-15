@@ -7,7 +7,11 @@ var PipeTiles = {
         '║░░░║',
         '╚═══╝',
         ],
-        frequency: 0
+        frequency: 0,
+        clearUp: false,
+        clearDown: false,
+        clearLeft: false,
+        clearRight: false
     },
     straight: {
         tile: [
@@ -17,8 +21,11 @@ var PipeTiles = {
         '═════',
         '▒▒▒▒▒',
         ],
-        frequency: 8
-        
+        frequency: 8,
+        clearUp: false,
+        clearDown: false,
+        clearLeft: true,
+        clearRight: true
     },
       downLeft: {
         tile: [
@@ -28,7 +35,11 @@ var PipeTiles = {
       '═══╝▒',
         '▒▒▒▒▒'
         ],
-        frequency:4
+        frequency:4,
+        clearUp: true,
+        clearDown: false,
+        clearLeft: true,
+        clearRight: true
     },
     downRight: {
         tile: [
@@ -38,7 +49,11 @@ var PipeTiles = {
         '▒╚═══',
         '▒▒▒▒▒'
         ],
-        frequency: 4
+        frequency: 4,
+        clearUp: true,
+        clearDown: false,
+        clearLeft: false,
+        clearRight: true
     },
     upRight:{
         tile: [
@@ -48,7 +63,11 @@ var PipeTiles = {
         '▒║ ╔═',
         '▒║ ║▒'
         ],
-        frequency: 4
+        frequency: 4,
+        clearUp: false,
+        clearDown: true,
+        clearLeft: false,
+        clearRight: true
     }
     ,
     upLeft: {
@@ -59,7 +78,11 @@ var PipeTiles = {
         '═╗ ║▒',
         '▒║ ║▒'
         ],
-        frequency: 4
+        frequency: 4,
+        clearUp: false,
+        clearDown: false,
+        clearLeft: true,
+        clearRight: false
     },
     teeLeft: {
         tile:[
@@ -69,7 +92,12 @@ var PipeTiles = {
         '═╗ ║▒',
         '▒║ ║▒'
         ],
-        frequency: 2
+        frequency: 2,
+        clearUp: true,
+        clearDown: true,
+        clearLeft: true,
+        clearRight: false
+
     },
     teeRight: {
         tile: [
@@ -79,7 +107,11 @@ var PipeTiles = {
         '▒║ ╔═',
         '▒║ ║▒'
         ],
-        frequency: 2
+        frequency: 2,
+        clearUp: true,
+        clearDown: true,
+        clearLeft: false,
+        clearRight: true
     },
     teeDown: {
         tile: [
@@ -89,7 +121,11 @@ var PipeTiles = {
         '═╗ ╔═',
         '▒║ ║▒'
         ],
-        frequency: 2
+        frequency: 2,
+        clearUp: false,
+        clearDown: true,
+        clearLeft: true,
+        clearRight: true
     },
     teeUp: {
         tile: [
@@ -99,9 +135,13 @@ var PipeTiles = {
         '═════',
         '▒▒▒▒▒'
         ],
-        frequency: 2
+        frequency: 2,
+        clearUp: true,
+        clearDown: false,
+        clearLeft: true,
+        clearRight: true
     },
-    verticle: {
+    vertical: {
         tile: [
         '▒║ ║▒',
         '▒║ ║▒',
@@ -109,7 +149,11 @@ var PipeTiles = {
         '▒║ ║▒',
         '▒║ ║▒'
         ],
-        frequency: 8
+        frequency: 8,
+        clearUp: true,
+        clearDown: true,
+        clearLeft: false,
+        clearRight: false
     },
     cross: {
         tile: [
@@ -119,6 +163,10 @@ var PipeTiles = {
         '═╗ ╔═',
         '▒║ ║▒'
         ],
-        frequency:1
+        frequency:1,
+        cclearUp: true,
+        clearDown: true,
+        clearLeft: true,
+        clearRight: true
     }
 };
