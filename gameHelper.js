@@ -1,3 +1,5 @@
+if (typeof require !== 'undefined') var PipeTiles = require('./tiles.js')
+
 // Come up with a better name than this 
 class GameHelper {
     static getTileWithName (tileName) {
@@ -27,3 +29,5 @@ class GameHelper {
         }
     }
 };
+
+if (typeof require !== 'undefined') module.exports = GameHelper

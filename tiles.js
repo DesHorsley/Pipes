@@ -170,3 +170,5 @@ var PipeTiles = {
         clearRight: true
     }
 };
+
+if (typeof require !== 'undefined') module.exports = PipeTiles;

@@ -13,3 +13,11 @@ Clone this repo (Or download it) and open the index.html in your browser, thats 
 I've been serving the html and javascript in my dev environment using [Live Server](https://github.com/tapio/live-server).
 
 It's a neat little web server which is light weight and auto refreshes when it notices changes in the file system.
+
+### Unit tests
+Requirejs and jasmine are being used in the unit tests, there are gaurds in the code to not break when the js is being served, `require` is not needed to run the game, just the tests.
+To run the unit tests open a terminal:
+
+    npm install
+
+    jasmine

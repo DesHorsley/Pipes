@@ -1,0 +1,27 @@
+{
+  "name": "pipes",
+  "version": "1.0.0",
+  "description": "Javascript version of Pipe Mania",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesHorsley/Pipes.git"
+  },
+  "keywords": [
+    "game",
+    "pipes",
+    "boardgame",
+    "puzzle"
+  ],
+  "author": "Des Horsley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DesHorsley/Pipes/issues"
+  },
+  "homepage": "https://github.com/DesHorsley/Pipes#readme",
+  "devDependencies": {
+    "jasmine": "^2.5.3"
+  }
+}
