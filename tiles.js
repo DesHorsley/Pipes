@@ -31,8 +31,8 @@ var PipeTiles = {
         tile: [
         '▒║ ║▒',
         '═╝ ║▒',
-        '&nbsp;&nbsp;&nbsp;║▒',
-      '═══╝▒',
+        '   ║▒',
+        '═══╝▒',
         '▒▒▒▒▒'
         ],
         frequency:4,
@@ -74,7 +74,7 @@ var PipeTiles = {
         tile: [
         '▒▒▒▒▒',
         '═══╗▒',
-        '&nbsp;&nbsp;&nbsp;║▒',
+        '   ║▒',
         '═╗ ║▒',
         '▒║ ║▒'
         ],
@@ -88,7 +88,7 @@ var PipeTiles = {
         tile:[
         '▒║ ║▒',
         '═╝ ║▒',
-        '&nbsp;&nbsp;&nbsp;║▒',
+        '   ║▒',
         '═╗ ║▒',
         '▒║ ║▒'
         ],

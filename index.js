@@ -7,23 +7,29 @@ var gameStart = function() {
     // The tile bag handles the frequencies of the tiles being displayed.
     self.tileBag = GameHelper.getTileBag();
 
-    GameHelper.SetBlankBoard(self.tiles);
+    GameHelper.SetBlankBoard(self.tiles, document);
 
 	// Set up the first tile
 	self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
-	document.getElementById("next-tile").innerHTML = GameHelper.getTileWithName(tileBag[nextTileNumber]).tile.join('</br>');
+    self.nextTile = document.getElementById("next-tile");
+    GameHelper.setTile(self.nextTile, GameHelper.getTileWithName(tileBag[nextTileNumber]).tile, document);
 
     document.onclick = function(e) {
         if(e.target.classList.contains('tile')) {
             var selected = GameHelper.getTileWithName(tileBag[self.nextTileNumber]);
 
-            e.target.innerHTML = selected.tile.join('</br>'); //displays the tile in the grid area
+            GameHelper.setTile(e.target, selected.tile, document);
+
             var gridId = parseInt(e.target.id);
  
             tileObj[gridId] = selected; //tileObj now holds a ref to the object placed there
 
             self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
-	        document.getElementById("next-tile").innerHTML = GameHelper.getTileWithName(tileBag[nextTileNumber]).tile.join('</br>');
+            
+            GameHelper.setTile(
+                self.nextTile,
+                GameHelper.getTileWithName(tileBag[nextTileNumber]).tile,
+                document);
         }
 
     	if(e.target.classList.contains('start'))

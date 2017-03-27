@@ -12,9 +12,12 @@
 
 .tile {
 	display: inline-block;
+	margin: 0; /* Removes gaps caused by <pre> elements */
+	font-family: Courier;
 }
 
 .entry {
 	display: inline-block;
 	vertical-align: top;
+	font-family: Courier;
 }

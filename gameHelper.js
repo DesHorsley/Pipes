@@ -22,10 +22,21 @@ class GameHelper {
         return tileBag;
     }
 
-    // TODO: Avoid innerHtml
-    static SetBlankBoard(tiles) {
+    static setTile(tile, tileContent, doc) {
+        // Clear out the current content of the element
+        while(tile.firstChild){
+            tile.removeChild(tile.firstChild);
+        }
+
+        tileContent.forEach(t => {
+            tile.appendChild(doc.createTextNode(t));
+            tile.appendChild(doc.createElement("BR"));
+        });
+    }
+    
+    static SetBlankBoard(tiles, doc) {
         for (var tile of tiles) {
-            tile.innerHTML =  PipeTiles.blank.tile.join('</br>');
+            GameHelper.setTile(tile, PipeTiles.blank.tile, doc)
         }
     }
 };
