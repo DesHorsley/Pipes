@@ -2,7 +2,7 @@ language: node_js
 node_js:  
   - "6.10"
 script:
- - "jasmine"
+ - "npm test"
 addons:
   code_climate:
     repo_token: e60c282228c0f17903a258babfc8c4a461ddd555667da5d5c5550e7046c3381c
