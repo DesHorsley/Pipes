@@ -4,7 +4,7 @@
   "description": "Javascript version of Pipe Mania",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "node_modules/.bin/istanbul cover node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/DesHorsley/Pipes#readme",
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "jasmine": "^2.5.3",
     "jsdom": "^9.12.0"
   }
