@@ -1,5 +1,5 @@
 
-# Pipes [![Build Status](https://travis-ci.org/DesHorsley/Pipes.svg?branch=master)](https://travis-ci.org/DesHorsley/Pipes)
+# Pipes [![Build Status](https://travis-ci.org/DesHorsley/Pipes.svg?branch=master)](https://travis-ci.org/DesHorsley/Pipes) [![Test Coverage](https://codeclimate.com/github/DesHorsley/Pipes/badges/coverage.svg)](https://codeclimate.com/github/DesHorsley/Pipes/coverage)
 Javascript and ascii version of the classic [1989 Pipe Mania Game](https://en.wikipedia.org/wiki/Pipe_Mania).
 
 Playable demo can be found here [https://deshorsley.github.io/Pipes/](https://deshorsley.github.io/Pipes/)
