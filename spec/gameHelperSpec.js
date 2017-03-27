@@ -24,7 +24,6 @@ describe("getTileBag", function() {
     });
 });
 
-// TODO: Avoid innerHtml
 describe("setBlankBoard", function() {
     it("inner text of each tile is a blank tile", function() {
         var listOfTiles = [tstDocument.createElement('pre'), tstDocument.createElement('pre')];
@@ -45,11 +44,17 @@ describe("setTile", function() {
         GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
         expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
     });
-    
+
     it("setTile replaces tiles existing content with new tile content", function() {
         var cross = tstDocument.createElement('pre');
         cross.innerHTML = PipeTiles.blank.tile.join('<br>');
         GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
         expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
+    });
+});
+
+describe("randomIntFromInterval", function() {
+    it("min and max of 1 returns 1", function() {
+        expect(GameHelper.randomIntFromInterval(1,1)).toEqual(1);
     });
 });
