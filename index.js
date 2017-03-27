@@ -41,12 +41,12 @@ var gameStart = function() {
 	    	if (tileObj[0].clearLeft) {
                 flow = true;
 	    	    console.log("Starting the flow");
-                alert(tile.innerHTML.indexOf(' '));
+                console.log((tile.innerHTML.indexOf(' ')));
                 var str = tile.innerHTML.split();
                 str.splice(tile.innerHTML.indexOf(' '),1,"▓").join();
-                alert(str);
+                console.log(str);
 	    	} else {
-                alert("Pipe blocked!");
+                console.log("Pipe blocked!");
             }
     	}
     }
