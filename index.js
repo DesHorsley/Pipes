@@ -20,7 +20,7 @@ var gameStart = function() {
 
             GameHelper.setTile(e.target, selected.tile, document);
 
-            var gridId = parseInt(e.target.id);
+            var gridId = parseInt(e.target.id, 10);
  
             tileObj[gridId] = selected; //tileObj now holds a ref to the object placed there
 

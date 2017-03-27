@@ -30,7 +30,7 @@ class GameHelper {
 
         tileContent.forEach((t,i) => {
             tile.appendChild(doc.createTextNode(t));
-            if (i != tileContent.length -1) {
+            if (i !== tileContent.length -1) {
                 tile.appendChild(doc.createElement("br"));
             }
         });
@@ -41,6 +41,6 @@ class GameHelper {
             GameHelper.setTile(tile, PipeTiles.blank.tile, doc)
         }
     }
-};
+}
 
 if (typeof require !== 'undefined') module.exports = GameHelper

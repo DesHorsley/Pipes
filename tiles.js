@@ -5,7 +5,7 @@ var PipeTiles = {
         '║░░░║',
         '║░░░║',
         '║░░░║',
-        '╚═══╝',
+        '╚═══╝'
         ],
         frequency: 0,
         clearUp: false,
@@ -19,7 +19,7 @@ var PipeTiles = {
         '═════',
         '     ',
         '═════',
-        '▒▒▒▒▒',
+        '▒▒▒▒▒'
         ],
         frequency: 8,
         clearUp: false,
