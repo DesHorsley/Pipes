@@ -1,6 +1,12 @@
 var GameHelper = require('./../gameHelper.js');
 var PipeTiles = require('./../tiles.js');
 
+// Setup JSDom
+var jsdom = require("jsdom");
+var htmlDoc = '<html lang="en-US"></html>';
+var tstDocument = jsdom.jsdom(htmlDoc);
+
+
 describe("getTileWithName", function() {
     it("Returns a tile requested", function() {
         expect(GameHelper.getTileWithName("blank")).toEqual(PipeTiles.blank);
@@ -19,15 +25,31 @@ describe("getTileBag", function() {
 });
 
 // TODO: Avoid innerHtml
-// describe("setBlankBoard", function() {
-//     it("inner text of each tile is a blank tile", function() {
-//         var listOfTiles = [document.createElement('div'), document.createElement('div')];
-//         var blankDiv = document.createElement('div');
-//         blankDiv.innerHTML = PipeTiles.blank.tile.join('</br>');
-//         GameHelper.SetBlankBoard(listOfTiles);
-//         var countOfBlankTiles = listOfTiles.filter(function(t) {
-//             return t.innerText === blankDiv.innerText
-//         }).length
-//         expect(countOfBlankTiles).toEqual(2);
-//     });
-// });
+describe("setBlankBoard", function() {
+    it("inner text of each tile is a blank tile", function() {
+        var listOfTiles = [tstDocument.createElement('pre'), tstDocument.createElement('pre')];
+        var blankPre = tstDocument.createElement('pre');
+        blankPre.innerHTML = PipeTiles.blank.tile.join('<br>');
+        
+        GameHelper.setBlankBoard(listOfTiles, tstDocument);
+        var countOfBlankTiles = listOfTiles.filter(function(t) {
+            return t.innerText === blankPre.innerText
+        }).length
+        expect(countOfBlankTiles).toEqual(2);
+    });
+});
+
+describe("setTile", function() {
+    it("setTile sets an empty tile to a new tile", function() {
+        var cross = tstDocument.createElement('pre');
+        GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
+        expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
+    });
+    
+    it("setTile replaces tiles existing content with new tile content", function() {
+        var cross = tstDocument.createElement('pre');
+        cross.innerHTML = PipeTiles.blank.tile.join('<br>');
+        GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
+        expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
+    });
+});

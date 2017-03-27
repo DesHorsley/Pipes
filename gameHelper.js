@@ -28,13 +28,15 @@ class GameHelper {
             tile.removeChild(tile.firstChild);
         }
 
-        tileContent.forEach(t => {
+        tileContent.forEach((t,i) => {
             tile.appendChild(doc.createTextNode(t));
-            tile.appendChild(doc.createElement("BR"));
+            if (i != tileContent.length -1) {
+                tile.appendChild(doc.createElement("br"));
+            }
         });
     }
     
-    static SetBlankBoard(tiles, doc) {
+    static setBlankBoard(tiles, doc) {
         for (var tile of tiles) {
             GameHelper.setTile(tile, PipeTiles.blank.tile, doc)
         }

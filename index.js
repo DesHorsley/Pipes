@@ -7,7 +7,7 @@ var gameStart = function() {
     // The tile bag handles the frequencies of the tiles being displayed.
     self.tileBag = GameHelper.getTileBag();
 
-    GameHelper.SetBlankBoard(self.tiles, document);
+    GameHelper.setBlankBoard(self.tiles, document);
 
 	// Set up the first tile
 	self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/DesHorsley/Pipes#readme",
   "devDependencies": {
-    "jasmine": "^2.5.3"
+    "jasmine": "^2.5.3",
+    "jsdom": "^9.12.0"
   }
 }

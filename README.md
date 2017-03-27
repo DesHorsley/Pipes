@@ -17,6 +17,9 @@ It's a neat little web server which is light weight and auto refreshes when it n
 
 ### Unit tests
 Requirejs and jasmine are being used in the unit tests, there are gaurds in the code to not break when the js is being served, `require` is not needed to run the game, just the tests.
+
+[jsdom](https://github.com/tmpvar/jsdom) is used to mimick our use of the document object
+
 To run the unit tests open a terminal:
 
     npm install
