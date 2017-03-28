@@ -1,18 +1,22 @@
 var gameStart = function() {
     console.log('Pipes started');
     var self = this;            
-    var tileObj = [];
+    self.tileObj = [];
+
+    self.gameState = GameHelper.getBlankBoard(new GameState());
 
 	self.tiles = document.getElementsByClassName('tile');
+
     // The tile bag handles the frequencies of the tiles being displayed.
     self.tileBag = GameHelper.getTileBag();
-
-    GameHelper.setBlankBoard(self.tiles, document);
 
 	// Set up the first tile
 	self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
     self.nextTile = document.getElementById("next-tile");
     GameHelper.setTile(self.nextTile, GameHelper.getTileWithName(tileBag[nextTileNumber]).tile, document);
+
+    self.board = document.getElementById("board");
+    GameHelper.setBoardHtml(self.gameState, self.board, document);
 
     document.onclick = function(e) {
         if(e.target.classList.contains('tile')) {
@@ -22,7 +26,7 @@ var gameStart = function() {
 
             var gridId = parseInt(e.target.id, 10);
  
-            tileObj[gridId] = selected; //tileObj now holds a ref to the object placed there
+            self.tileObj[gridId] = selected; //tileObj now holds a ref to the object placed there
 
             self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
             
@@ -38,7 +42,7 @@ var gameStart = function() {
     		
     		var board = document.getElementsByClassName("board")[0];
             var flow = false;
-	    	if (tileObj[0].clearLeft) {
+	    	if (self.tileObj[0].clearLeft) {
                 flow = true;
 	    	    console.log("Starting the flow");
                 console.log((tile.innerHTML.indexOf(' ')));

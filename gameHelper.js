@@ -1,4 +1,7 @@
-if (typeof require !== 'undefined') var PipeTiles = require('./tiles.js')
+if (typeof require !== 'undefined') {
+    var PipeTiles = require('./tiles.js');
+    var GameState = require('./gameState.js');
+}
 
 // Come up with a better name than this 
 class GameHelper {
@@ -7,11 +10,11 @@ class GameHelper {
     }
 
     static randomIntFromInterval (min, max) {
-        return Math.floor(Math.random()*(max-min+1)+min);
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     static getTileBag() {
-        var tileBag = []
+        var tileBag = [];
         for (var key in PipeTiles) {
             if (PipeTiles.hasOwnProperty(key)) {
                 for(var tileCount = 0; tileCount < PipeTiles[key].frequency; tileCount++) {
@@ -24,23 +27,41 @@ class GameHelper {
 
     static setTile(tile, tileContent, doc) {
         // Clear out the current content of the element
-        while(tile.firstChild){
+        while(tile.firstChild) {
             tile.removeChild(tile.firstChild);
         }
 
         tileContent.forEach((t,i) => {
             tile.appendChild(doc.createTextNode(t));
             if (i !== tileContent.length -1) {
-                tile.appendChild(doc.createElement("br"));
+                tile.appendChild(doc.createElement('br'));
             }
         });
     }
+
+    static setBoardHtml(state, board, doc) {
+        state.tilePositions.forEach(function(row) {
+            var rowDiv = doc.createElement('div');
+            row.forEach(function(pos) {
+                var tile = doc.createElement('pre');
+                tile.className += "tile";
+                GameHelper.setTile(tile, pos.tile, doc);
+                rowDiv.appendChild(tile);
+            })
+            board.appendChild(rowDiv);
+        } );
+    }
     
-    static setBlankBoard(tiles, doc) {
-        for (var tile of tiles) {
-            GameHelper.setTile(tile, PipeTiles.blank.tile, doc)
+    static getBlankBoard(state) {
+        var tiles = Array(6).fill().map(a => Array(6))
+        for (var i = 0; i < 6 ; i++) {
+            for (var j = 0; j < 6 ; j++) {
+                tiles[i][j] = PipeTiles.blank;
+            }   
         }
+
+        return Object.assign({}, state, {tilePositions: tiles});
     }
 }
 
-if (typeof require !== 'undefined') module.exports = GameHelper
+if (typeof require !== 'undefined') module.exports = GameHelper;

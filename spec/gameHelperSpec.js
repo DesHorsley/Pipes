@@ -38,6 +38,18 @@ describe("setBlankBoard", function() {
     });
 });
 
+describe("getBlankBoard", function() {
+    it("generates 6 rows of tiles", function() {
+        var newState = GameHelper.getBlankBoard();
+        expect(newState.tilePositions.length).toEqual(6);
+    });
+
+    it("generates 36 tiles", function() {
+        var newState = GameHelper.getBlankBoard();
+        expect(newState.tilePositions.reduce(function(accum, row) { return accum + row.length},0)).toEqual(36);
+    });
+});
+
 describe("setTile", function() {
     it("setTile sets an empty tile to a new tile", function() {
         var cross = tstDocument.createElement('pre');
