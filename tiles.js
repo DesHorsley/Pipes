@@ -164,7 +164,7 @@ var PipeTiles = {
         '▒║ ║▒'
         ],
         frequency:1,
-        cclearUp: true,
+        clearUp: true,
         clearDown: true,
         clearLeft: true,
         clearRight: true
