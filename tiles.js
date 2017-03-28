@@ -39,7 +39,7 @@ var PipeTiles = {
         clearUp: true,
         clearDown: false,
         clearLeft: true,
-        clearRight: true
+        clearRight: false
     },
     downRight: {
         tile: [
@@ -80,7 +80,7 @@ var PipeTiles = {
         ],
         frequency: 4,
         clearUp: false,
-        clearDown: false,
+        clearDown: true,
         clearLeft: true,
         clearRight: false
     },
