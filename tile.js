@@ -4,12 +4,15 @@ function Tile(frequency, clearUp, clearDown, clearLeft, clearRight) {
     this.clearDown = clearDown;
     this.clearLeft = clearLeft;
     this.clearRight = clearRight;
-    var des = 'foo'
 }
 
 Tile.prototype.tileDisplay = function() {
     var self = this;
     var arr = [];
+
+    var isBlankTile = function() {
+        return !self.clearUp && !self.clearDown && !self.clearLeft && !self.clearRight;
+    }
     
     var setTopOrBottom = function(clear) {
         if (clear) {
@@ -54,11 +57,21 @@ Tile.prototype.tileDisplay = function() {
         return row;
     }
 
-    arr.push(setTopOrBottom(self.clearUp))
-    arr.push(setRow2())
-    arr.push(setRow3())
-    arr.push(setRow4())
-    arr.push(setTopOrBottom(self.clearDown))
+    if (isBlankTile()) {
+        return [
+        '╔═══╗',
+        '║░░░║',
+        '║░░░║',
+        '║░░░║',
+        '╚═══╝'
+        ];
+    }
+
+    arr.push(setTopOrBottom(self.clearUp));
+    arr.push(setRow2());
+    arr.push(setRow3());
+    arr.push(setRow4());
+    arr.push(setTopOrBottom(self.clearDown));
     return arr;
 }
 
