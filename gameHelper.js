@@ -26,10 +26,7 @@ class GameHelper {
     }
 
     static setTile(tile, tileContent, doc) {
-        // Clear out the current content of the element
-        while(tile.firstChild) {
-            tile.removeChild(tile.firstChild);
-        }
+        GameHelper.removeChildElements(tile);
 
         tileContent.forEach((t,i) => {
             tile.appendChild(doc.createTextNode(t));
@@ -50,7 +47,7 @@ class GameHelper {
         }
     }
 
-    static setGameHtml(state, game, doc) {
+    static setGameHtml(state, doc) {
         var nextTilePre = doc.getElementById('next-tile');
         GameHelper.removeChildElements(nextTilePre);
         GameHelper.setTile(nextTilePre, state.nextTile.tile, doc);

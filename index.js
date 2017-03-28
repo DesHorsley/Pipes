@@ -5,8 +5,7 @@ var gameStart = function() {
     self.gameState = GameHelper.getBlankBoard(new GameState(GameHelper.getTileBag()));
     self.gameState = GameHelper.getNextTile(self.gameState);
 
-    self.gameElement = document.getElementById("game");
-    GameHelper.setGameHtml(self.gameState, self.gameElement, document);
+    GameHelper.setGameHtml(self.gameState, document);
 
     document.onclick = function(e) {
         if(e.target.classList.contains('tile')) {
@@ -14,7 +13,7 @@ var gameStart = function() {
             var col = e.target.id;
             self.gameState = GameHelper.tileSelected(self.gameState, row, col);
 
-            GameHelper.setGameHtml(self.gameState, self.gameElement, document);
+            GameHelper.setGameHtml(self.gameState, document);
         }
 
         // Eventually the flow will begin on a timer, for the mean time, this button will start the flow for testing purposes.
