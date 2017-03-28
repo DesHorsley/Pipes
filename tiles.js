@@ -1,174 +1,18 @@
-var PipeTiles = {
-    blank: {
-        tile: [
-        '╔═══╗',
-        '║░░░║',
-        '║░░░║',
-        '║░░░║',
-        '╚═══╝'
-        ],
-        frequency: 0,
-        clearUp: false,
-        clearDown: false,
-        clearLeft: false,
-        clearRight: false
-    },
-    straight: {
-        tile: [
-        '▒▒▒▒▒',
-        '═════',
-        '     ',
-        '═════',
-        '▒▒▒▒▒'
-        ],
-        frequency: 8,
-        clearUp: false,
-        clearDown: false,
-        clearLeft: true,
-        clearRight: true
-    },
-      downLeft: {
-        tile: [
-        '▒║ ║▒',
-        '═╝ ║▒',
-        '   ║▒',
-        '═══╝▒',
-        '▒▒▒▒▒'
-        ],
-        frequency:4,
-        clearUp: true,
-        clearDown: false,
-        clearLeft: true,
-        clearRight: false
-    },
-    downRight: {
-        tile: [
-        '▒║ ║▒',
-        '▒║ ╚═',
-        '▒║   ',
-        '▒╚═══',
-        '▒▒▒▒▒'
-        ],
-        frequency: 4,
-        clearUp: true,
-        clearDown: false,
-        clearLeft: false,
-        clearRight: true
-    },
-    upRight:{
-        tile: [
-        '▒▒▒▒▒',
-        '▒╔═══',
-        '▒║   ',
-        '▒║ ╔═',
-        '▒║ ║▒'
-        ],
-        frequency: 4,
-        clearUp: false,
-        clearDown: true,
-        clearLeft: false,
-        clearRight: true
-    }
-    ,
-    upLeft: {
-        tile: [
-        '▒▒▒▒▒',
-        '═══╗▒',
-        '   ║▒',
-        '═╗ ║▒',
-        '▒║ ║▒'
-        ],
-        frequency: 4,
-        clearUp: false,
-        clearDown: true,
-        clearLeft: true,
-        clearRight: false
-    },
-    teeLeft: {
-        tile:[
-        '▒║ ║▒',
-        '═╝ ║▒',
-        '   ║▒',
-        '═╗ ║▒',
-        '▒║ ║▒'
-        ],
-        frequency: 2,
-        clearUp: true,
-        clearDown: true,
-        clearLeft: true,
-        clearRight: false
+if (typeof require !== 'undefined') var Tile = require('./tile.js');
 
-    },
-    teeRight: {
-        tile: [
-        '▒║ ║▒',
-        '▒║ ╚═',
-        '▒║   ',
-        '▒║ ╔═',
-        '▒║ ║▒'
-        ],
-        frequency: 2,
-        clearUp: true,
-        clearDown: true,
-        clearLeft: false,
-        clearRight: true
-    },
-    teeDown: {
-        tile: [
-        '▒▒▒▒▒',
-        '═════',
-        '     ',
-        '═╗ ╔═',
-        '▒║ ║▒'
-        ],
-        frequency: 2,
-        clearUp: false,
-        clearDown: true,
-        clearLeft: true,
-        clearRight: true
-    },
-    teeUp: {
-        tile: [
-        '▒║ ║▒',
-        '═╝ ╚═',
-        '     ',
-        '═════',
-        '▒▒▒▒▒'
-        ],
-        frequency: 2,
-        clearUp: true,
-        clearDown: false,
-        clearLeft: true,
-        clearRight: true
-    },
-    vertical: {
-        tile: [
-        '▒║ ║▒',
-        '▒║ ║▒',
-        '▒║ ║▒',
-        '▒║ ║▒',
-        '▒║ ║▒'
-        ],
-        frequency: 8,
-        clearUp: true,
-        clearDown: true,
-        clearLeft: false,
-        clearRight: false
-    },
-    cross: {
-        tile: [
-        '▒║ ║▒',
-        '═╝ ╚═',
-        '     ',
-        '═╗ ╔═',
-        '▒║ ║▒'
-        ],
-        frequency:1,
-        clearUp: true,
-        clearDown: true,
-        clearLeft: true,
-        clearRight: true
-    }
+var PipeTiles = {
+    blank: new Tile( 0, false, false, false, false ),
+    straight: new Tile(8, false, false, true, true),
+    downLeft: new Tile(4, true, false, true, false),
+    downRight: new Tile(4, true, false, false, true),
+    upRight: new Tile(4, false, true, false, true),
+    upLeft: new Tile(4, false, true, true, false),
+    teeLeft: new Tile(2, true, true, true, false),
+    teeRight: new Tile(2, true, true, false, true),
+    teeDown: new Tile(2, false, true, true, true),
+    teeUp: new Tile( 2, true, false, true, true),
+    vertical: new Tile(8, true, true, false, false),
+    cross: new Tile(1, true, true, true, true)
 };
 
 if (typeof require !== 'undefined') module.exports = PipeTiles;

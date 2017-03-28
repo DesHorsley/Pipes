@@ -1,5 +1,6 @@
 if (typeof require !== 'undefined') {
     var PipeTiles = require('./tiles.js');
+    var TilePosition = require('./tilePosition.js');
     var GameState = require('./gameState.js');
 }
 
@@ -50,7 +51,7 @@ class GameHelper {
     static setGameHtml(state, doc) {
         var nextTilePre = doc.getElementById('next-tile');
         GameHelper.removeChildElements(nextTilePre);
-        GameHelper.setTile(nextTilePre, state.nextTile.tile, doc);
+        GameHelper.setTile(nextTilePre, state.nextTile.tileDisplay(), doc);
 
         var board = doc.getElementById('board');
         GameHelper.removeChildElements(board);
@@ -61,7 +62,7 @@ class GameHelper {
                 var tile = doc.createElement('pre');
                 tile.setAttribute("id", posIndex);
                 tile.className += "tile";
-                GameHelper.setTile(tile, pos.tile, doc);
+                GameHelper.setTile(tile, pos.tile.tileDisplay(), doc);
                 rowDiv.appendChild(tile);
             })
             board.appendChild(rowDiv);
@@ -70,7 +71,7 @@ class GameHelper {
 
     static tileSelected(state, row, col) {
         var newState = Object.assign({}, state);
-        newState.tilePositions[row][col] = newState.nextTile; // This feels wrong, revisit.
+        newState.tilePositions[row][col] = new TilePosition(newState.nextTile); // This feels wrong, revisit.
         newState = GameHelper.getNextTile(newState)
         return newState;
     }
@@ -79,7 +80,7 @@ class GameHelper {
         var tiles = Array(6).fill().map(a => Array(6))
         for (var i = 0; i < 6 ; i++) {
             for (var j = 0; j < 6 ; j++) {
-                tiles[i][j] = PipeTiles.blank;
+                tiles[i][j] = new TilePosition(PipeTiles.blank);
             }   
         }
 

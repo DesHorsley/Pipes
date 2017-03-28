@@ -1,6 +1,7 @@
 var GameHelper = require('./../gameHelper.js');
 var PipeTiles = require('./../tiles.js');
 var GameState = require('./../gameState.js');
+var TilePosition = require('./../tilePosition.js');
 
 // Setup JSDom
 var jsdom = require("jsdom");
@@ -33,15 +34,15 @@ describe("getTileBag", function() {
 describe("setTile", function() {
     it("setTile sets an empty tile to a new tile", function() {
         var cross = tstDocument.createElement('pre');
-        GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
-        expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
+        GameHelper.setTile(cross, PipeTiles.cross.tileDisplay(), tstDocument);
+        expect(cross.innerHTML).toEqual(PipeTiles.cross.tileDisplay().join('<br>'));
     });
 
     it("setTile replaces tiles existing content with new tile content", function() {
         var cross = tstDocument.createElement('pre');
-        cross.innerHTML = PipeTiles.blank.tile.join('<br>');
-        GameHelper.setTile(cross, PipeTiles.cross.tile, tstDocument);
-        expect(cross.innerHTML).toEqual(PipeTiles.cross.tile.join('<br>'));
+        cross.innerHTML = PipeTiles.blank.tileDisplay().join('<br>');
+        GameHelper.setTile(cross, PipeTiles.cross.tileDisplay(), tstDocument);
+        expect(cross.innerHTML).toEqual(PipeTiles.cross.tileDisplay().join('<br>'));
     });
 });
 
@@ -106,7 +107,7 @@ describe('tileSelected', () => {
     var gs = GameHelper.getBlankBoard(new GameState(GameHelper.getTileBag()));
     var stateAfterClick = GameHelper.tileSelected(gs, 0, 0);
     it('should set the selected tile to the current nextTile value', () => {
-        expect(stateAfterClick.tilePositions[0][0]).toEqual(gs.nextTile);
+        expect(stateAfterClick.tilePositions[0][0]).toEqual(new TilePosition(gs.nextTile));
     });
 });
     
