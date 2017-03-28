@@ -1,5 +1,6 @@
 var GameHelper = require('./../gameHelper.js');
 var PipeTiles = require('./../tiles.js');
+var GameState = require('./../gameState.js');
 
 // Setup JSDom
 var jsdom = require("jsdom");
@@ -24,17 +25,10 @@ describe("getTileBag", function() {
     });
 });
 
-describe("setBlankBoard", function() {
-    it("inner text of each tile is a blank tile", function() {
-        var listOfTiles = [tstDocument.createElement('pre'), tstDocument.createElement('pre')];
-        var blankPre = tstDocument.createElement('pre');
-        blankPre.innerHTML = PipeTiles.blank.tile.join('<br>');
-        
-        GameHelper.setBlankBoard(listOfTiles, tstDocument);
-        var countOfBlankTiles = listOfTiles.filter(function(t) {
-            return t.innerText === blankPre.innerText
-        }).length
-        expect(countOfBlankTiles).toEqual(2);
+describe("getNextTile", function() {
+    it("Returns the supplied tile as the next tile.", function() {
+        var gs = new GameState([GameHelper.getTileBag()[0]]);
+        expect(GameHelper.getNextTile(gs).nextTile).toEqual(GameHelper.getTileWithName(GameHelper.getTileBag()[0]));
     });
 });
 

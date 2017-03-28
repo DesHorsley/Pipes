@@ -6,7 +6,7 @@ if (typeof require !== 'undefined') {
 // Come up with a better name than this 
 class GameHelper {
     static getTileWithName (tileName) {
-        return PipeTiles[tileName];//returns a reference to the object
+        return PipeTiles[tileName]; // returns a reference to the object
     }
 
     static randomIntFromInterval (min, max) {
@@ -39,17 +39,43 @@ class GameHelper {
         });
     }
 
-    static setBoardHtml(state, board, doc) {
-        state.tilePositions.forEach(function(row) {
+    static getNextTile(state) {
+        var nextTileNumber = GameHelper.randomIntFromInterval(0, state.tileBag.length - 1)
+        return Object.assign({}, state, { nextTile: GameHelper.getTileWithName(state.tileBag[nextTileNumber])});
+    }
+
+    static removeChildElements(element) {
+        while(element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+
+    static setGameHtml(state, game, doc) {
+        var nextTilePre = doc.getElementById('next-tile');
+        GameHelper.removeChildElements(nextTilePre);
+        GameHelper.setTile(nextTilePre, state.nextTile.tile, doc);
+
+        var board = doc.getElementById('board');
+        GameHelper.removeChildElements(board);
+        state.tilePositions.forEach(function(row, rowIndex) {
             var rowDiv = doc.createElement('div');
-            row.forEach(function(pos) {
+            rowDiv.setAttribute("id", rowIndex);
+            row.forEach(function(pos, posIndex) {
                 var tile = doc.createElement('pre');
+                tile.setAttribute("id", posIndex);
                 tile.className += "tile";
                 GameHelper.setTile(tile, pos.tile, doc);
                 rowDiv.appendChild(tile);
             })
             board.appendChild(rowDiv);
         } );
+    }
+
+    static tileSelected(state, row, col) {
+        var newState = Object.assign({}, state);
+        newState.tilePositions[row][col] = newState.nextTile; // This feels wrong, revisit.
+        newState = GameHelper.getNextTile(newState)
+        return newState;
     }
     
     static getBlankBoard(state) {

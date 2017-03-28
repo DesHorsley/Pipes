@@ -1,12 +1,10 @@
 if (typeof require !== 'undefined') var TilePosition = require('./tilePosition.js');
 
-function GameState() {
-    this.initialise();
-}
-
-GameState.prototype.initialise = function() {
+function GameState(tileBag = {}) {
     this.flowState = GameState.FlowStateEnum.NOTFLOWING;
     this.tilePositions = [];
+    this.nextTile = undefined;
+    this.tileBag = tileBag;
 }
 
 GameState.prototype.inFlowState = function (flowState) {

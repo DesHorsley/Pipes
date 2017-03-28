@@ -1,43 +1,27 @@
 var gameStart = function() {
     console.log('Pipes started');
     var self = this;            
-    self.tileObj = [];
 
-    self.gameState = GameHelper.getBlankBoard(new GameState());
+    self.gameState = GameHelper.getBlankBoard(new GameState(GameHelper.getTileBag()));
+    self.gameState = GameHelper.getNextTile(self.gameState);
 
-	self.tiles = document.getElementsByClassName('tile');
-
-    // The tile bag handles the frequencies of the tiles being displayed.
-    self.tileBag = GameHelper.getTileBag();
-
-	// Set up the first tile
-	self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
-    self.nextTile = document.getElementById("next-tile");
-    GameHelper.setTile(self.nextTile, GameHelper.getTileWithName(tileBag[nextTileNumber]).tile, document);
-
-    self.board = document.getElementById("board");
-    GameHelper.setBoardHtml(self.gameState, self.board, document);
+    self.gameElement = document.getElementById("game");
+    GameHelper.setGameHtml(self.gameState, self.gameElement, document);
 
     document.onclick = function(e) {
         if(e.target.classList.contains('tile')) {
-            var selected = GameHelper.getTileWithName(tileBag[self.nextTileNumber]);
+            var row = e.target.parentElement.id;
+            var col = e.target.id;
+            self.gameState = GameHelper.tileSelected(self.gameState, row, col);
 
-            GameHelper.setTile(e.target, selected.tile, document);
-
-            var gridId = parseInt(e.target.id, 10);
- 
-            self.tileObj[gridId] = selected; //tileObj now holds a ref to the object placed there
-
-            self.nextTileNumber = GameHelper.randomIntFromInterval(1, tileBag.length-1);
-            
-            GameHelper.setTile(
-                self.nextTile,
-                GameHelper.getTileWithName(tileBag[nextTileNumber]).tile,
-                document);
+            GameHelper.setGameHtml(self.gameState, self.gameElement, document);
         }
 
+        // Eventually the flow will begin on a timer, for the mean time, this button will start the flow for testing purposes.
     	if(e.target.classList.contains('start'))
     	{
+            self.tileObj = [];
+	        self.tiles = document.getElementsByClassName('tile');
     		var tile = self.tiles[0];
     		
     		var board = document.getElementsByClassName("board")[0];
