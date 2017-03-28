@@ -7,6 +7,15 @@ var gameStart = function() {
 
     GameHelper.setGameHtml(self.gameState, document);
 
+    setInterval(function() {
+        if (self.gameState.timer % 10 === 0) {
+            GameHelper.setGameHtml(self.gameState, document);
+        }
+
+        self.gameState = GameHelper.incrementTimer(self.gameState);
+
+    }, 100);
+
     document.onclick = function(e) {
         if(e.target.classList.contains('tile')) {
             var row = e.target.parentElement.id;

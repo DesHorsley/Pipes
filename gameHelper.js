@@ -48,10 +48,18 @@ class GameHelper {
         }
     }
 
+    static incrementTimer(state) {
+        return Object.assign({}, state, {timer: state.timer + 1});
+    }
+
     static setGameHtml(state, doc) {
         var nextTilePre = doc.getElementById('next-tile');
         GameHelper.removeChildElements(nextTilePre);
         GameHelper.setTile(nextTilePre, state.nextTile.tileDisplay(), doc);
+
+        var timer = doc.getElementById('timer');
+        GameHelper.removeChildElements(timer);
+        timer.appendChild(doc.createTextNode(parseInt(state.timer/10,10)));
 
         var board = doc.getElementById('board');
         GameHelper.removeChildElements(board);

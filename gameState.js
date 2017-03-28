@@ -5,6 +5,7 @@ function GameState(tileBag = {}) {
     this.tilePositions = [];
     this.nextTile = undefined;
     this.tileBag = tileBag;
+    this.timer = 0;
 }
 
 GameState.prototype.inFlowState = function (flowState) {

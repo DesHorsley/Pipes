@@ -70,6 +70,7 @@ describe('setGameHtlm', () => {
     var htmlDoc = `
     <main id="game">
 	<button class="start">Start</button>
+    Timer: <span id="timer">0</span>
 	<div>
 		Next Tile: <pre id="next-tile" class="next-tile"></pre>
 	</div>
@@ -100,6 +101,15 @@ describe('setGameHtlm', () => {
 
         // Ensure the tiles have been rendered.
         expect(doc.getElementsByClassName("tile").length).toBe(36);
+    });
+});
+
+describe('incrementTimer', () => {
+    var gs = GameHelper.getBlankBoard(new GameState(GameHelper.getTileBag()));
+
+    it('timer should go from 0 to 1', () => {
+        expect(gs.timer).toBeFalsy();
+        expect(GameHelper.incrementTimer(gs).timer).toEqual(1);
     });
 });
 
