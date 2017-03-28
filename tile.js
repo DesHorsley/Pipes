@@ -13,6 +13,10 @@ Tile.prototype.tileDisplay = function() {
     var isBlankTile = function() {
         return !self.clearUp && !self.clearDown && !self.clearLeft && !self.clearRight;
     }
+
+    var isEntryTile = function() {
+        return !self.clearUp && !self.clearDown && !self.clearLeft && self.clearRight;
+    }
     
     var setTopOrBottom = function(clear) {
         if (clear) {
@@ -65,6 +69,16 @@ Tile.prototype.tileDisplay = function() {
         '║░░░║',
         '╚═══╝'
         ];
+    }
+
+    if (isEntryTile()) {
+        return [
+        '   ',
+        '╚══',
+        '   ',
+        '╔══',
+        '   '
+        ]
     }
 
     arr.push(setTopOrBottom(self.clearUp));

@@ -61,6 +61,10 @@ class GameHelper {
         GameHelper.removeChildElements(timer);
         timer.appendChild(doc.createTextNode(parseInt(state.timer/10,10)));
 
+        var entry = doc.getElementById('entry');
+        GameHelper.removeChildElements(entry);
+        GameHelper.setTile(entry, state.entryTile.tile.tileDisplay(), doc);
+
         var board = doc.getElementById('board');
         GameHelper.removeChildElements(board);
         state.tilePositions.forEach(function(row, rowIndex) {
@@ -92,7 +96,10 @@ class GameHelper {
             }   
         }
 
-        return Object.assign({}, state, {tilePositions: tiles});
+        return Object.assign({}, state, {
+            tilePositions: tiles,
+            entryTile: new TilePosition(PipeTiles.entry)
+        });
     }
 }
 

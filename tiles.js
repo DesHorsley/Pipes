@@ -2,6 +2,7 @@ if (typeof require !== 'undefined') var Tile = require('./tile.js');
 
 var PipeTiles = {
     blank: new Tile( 0, false, false, false, false ),
+    entry: new Tile(0, false, false, false, true),
     straight: new Tile(8, false, false, true, true),
     downLeft: new Tile(4, true, false, true, false),
     downRight: new Tile(4, true, false, false, true),

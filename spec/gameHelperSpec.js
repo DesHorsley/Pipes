@@ -74,8 +74,8 @@ describe('setGameHtlm', () => {
 	<div>
 		Next Tile: <pre id="next-tile" class="next-tile"></pre>
 	</div>
-	<div class="entry">
-<pre>
+	<div class="entry-container">
+<pre id="entry">
 
 ╚═
 

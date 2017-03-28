@@ -16,8 +16,16 @@
 	font-family: Courier;
 }
 
-.entry {
+.entry-container {
 	display: inline-block;
+	vertical-align: top;
+}
+
+#entry {
+	/* Line the entry up with the first pipe */
+	margin-right: -4px;
+	padding-top: 1px; 
+
 	vertical-align: top;
 	font-family: Courier;
 }

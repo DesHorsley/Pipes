@@ -13,6 +13,18 @@ describe("tileDisplay", function() {
             '╚═══╝']);
     });
 
+    it("can generate a entry tile", function() {
+        var pipe = PipeTiles.entry;
+        var t = new Tile(pipe.frequency, pipe.clearUp, pipe.clearDown, pipe.clearLeft, pipe.clearRight);
+        expect(t.tileDisplay()).toEqual([
+            '   ',
+            '╚══',
+            '   ',
+            '╔══',
+            '   ']);
+    });
+
+
     it("can generate a straight tile", function() {
         var pipe = PipeTiles.straight;
         var t = new Tile(pipe.frequency, pipe.clearUp, pipe.clearDown, pipe.clearLeft, pipe.clearRight);
